@@ -6,7 +6,7 @@ OBJS = $(SRCS:.c=.o)
 
 INCLUDES = -I ./inc
 
-CC = g++ 
+CC = g++ -std=c++17 
 
 all : $(NAME)
 
