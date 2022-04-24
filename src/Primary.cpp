@@ -5,17 +5,19 @@
 Primary::Primary() {
 	commandMap["add"] = &Primary::addNote;
 	commandMap["all"] = &Primary::allNotes;
-	commandMap["exit"] = &Primary::deleteAll;
+	commandMap["delete"] = &Primary::deleteNote;
 }
 
-bool Primary::choseOption(const string& option, Database db) {
+bool Primary::choseOption(const string& option, Database *db) {
+	if(option.compare("exit"))
+		return true;
 	if(commandMap.count(option)) {
 		try {
-			(db.*commandMap.find(option)->second)();
+			(db->*commandMap.find(option)->second)();
 			return true;
 		}
 		catch (exception &e){
-			cout << "error";
+			output(e.what());
 		}
 	}
 	output("please choose one of the options written above!");
@@ -29,6 +31,6 @@ void Primary::displayMenu(){
 
 	system("clear");
 	output("type one option.");
-	output("\tall\tadd\thelp\texit");
+	output("\tall\tadd\thelp\tdelete\texit");
 }
 

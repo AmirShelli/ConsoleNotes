@@ -1,11 +1,11 @@
 #include "../inc/Secondary.hpp"
 
-bool Secondary::choseOption(const string& option, Database db) {
+bool Secondary::choseOption(const string& option, Database *db) {
 	
 	system("clear");
 	if(isValid(option)) {
-		output("type \":q\" to finish typing.");
-		db.openNote(option);
+		output("type \":q\" to finish writing.");
+		db->openNote(option);
 		return true;
 	}
 	else if (option.compare("back")) {

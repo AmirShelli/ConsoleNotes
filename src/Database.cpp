@@ -1,8 +1,8 @@
 #include "../inc/Database.hpp"
 
-Database::Database(char *directory)
+Database::Database(const string &directory)
 {
-	_directory = directory;
+	_directory = directory.c_str();
 }
 
 void Database::readFrom(const string &fileName) {
@@ -54,18 +54,18 @@ void Database::addNote() {
 }
 
 
-void Database::deleteAll()
+void Database::deleteNote()
 {
-	exit(0);
+	cout << "not yet implemented";
+	system("read");
 }
 
 void Database::allNotes() {
-	if(!countFiles()) {	
+	if(!countFiles())
 		cout << "you have no files in your database.";
-		system("read");
-	}
 	else 
 		showAllFiles();
+	system("read");
 
 }
 

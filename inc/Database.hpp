@@ -1,3 +1,6 @@
+#ifndef DATABASE_HPP
+#define DATABASE_HPP
+
 #include "main.hpp"
 #include "Filehandler.hpp"
 
@@ -9,9 +12,12 @@ private:
 	void readFrom(const string &fileName);
 	void writeInto(const string &fileName);
 public:
-	Database(char *dirName);
+	Database(const string &dirName);
 	void addNote();
 	void allNotes();
-	void deleteAll();
+	void deleteNote();
 	void openNote(const string &fileName);
 };
+
+
+#endif
