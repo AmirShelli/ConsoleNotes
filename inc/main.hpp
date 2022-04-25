@@ -18,5 +18,4 @@ using namespace std;
 class Database;
 class Menu;
 
-
 #endif

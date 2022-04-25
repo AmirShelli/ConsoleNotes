@@ -1,36 +1,40 @@
 #include "../inc/Filehandler.hpp"
 
 bool Filehandler::isValid(const string &fileName) const {
-	DIR* dir_point = opendir(_directory);
+	DIR* dir_point = opendir(this->_directory);
 	dirent* entry;
 	while ((entry = readdir(dir_point))){
-		if (entry->d_type == DT_REG && fileName == entry->d_name)
+		if (entry->d_type == DT_REG && fileName == entry->d_name){
+			closedir(dir_point);
 			return true;
+		}
 	}
+	closedir(dir_point);
 	return false;
 }
 
 void Filehandler::showAllFiles() const {
-	DIR* dir_point = opendir(_directory);
+	DIR* dir_point = opendir(this->_directory);
 	dirent* entry;
 
 	while ((entry = readdir(dir_point))){
 		if (entry->d_type == DT_REG)
 			cout << entry->d_name << endl;
 	}
+	closedir(dir_point);
 }
 
 unsigned int Filehandler::countFiles()
 {
-	DIR* dir_point = opendir(_directory);
+	DIR* dir_point = opendir(this->_directory);
 	dirent* entry;
-	unsigned int count;
-
+	unsigned int count = 0;
 
 	while ((entry = readdir(dir_point))){
 		if (entry->d_type == DT_REG)
 			count++;
 	}
+	closedir(dir_point);
 	return count;
 }
 

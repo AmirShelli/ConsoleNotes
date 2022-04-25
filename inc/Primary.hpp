@@ -5,6 +5,9 @@
 #include "main.hpp"
 
 class Primary : public Imenu {
+private:
+	typedef void (Database::*function)();
+	map<string,function> commandMap;
 public:
 	Primary();
 	void displayMenu();

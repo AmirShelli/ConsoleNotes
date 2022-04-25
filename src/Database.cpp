@@ -1,4 +1,6 @@
 #include "../inc/Database.hpp"
+#include <cstdlib>
+
 
 Database::Database(const string &directory)
 {
@@ -18,8 +20,16 @@ void Database::readFrom(const string &fileName) {
 	}
 	else 
 		throw exception();
+	
 }
 
+const char *Database::getHome() const {
+	return this->_homeDirectory;
+}
+
+const char *Database::getDirectory() const {
+	return this->_directory;
+}
 
 void Database::writeInto(const string &fileName) {
 	string line;
@@ -41,36 +51,48 @@ void Database::addNote() {
 	string fileName;
 	bool alreadyExists;
 
-	cout << "enter the name of the new note.\n";
 	do {
+		cout << "name of the note: ";
 		cin >> fileName;
-	} while(!isValid(fileName));
+	} while(isValid(fileName));
+
+	file.open(this->getDirectory() + fileName);
 	if (file.is_open()){
 		cout << "your note was successfully created.\n";
 		file.close();
+		cin.get();
 	}	
 	else
 		throw exception();
 }
 
 
-void Database::deleteNote()
+void Database::deleteNote(const string &fileName)
 {
 	cout << "not yet implemented";
-	system("read");
+	cin.get();
 }
 
 void Database::allNotes() {
-	if(!countFiles())
+	system("clear");
+	if(!this->countFiles())
 		cout << "you have no files in your database.";
 	else 
-		showAllFiles();
-	system("read");
+		this->showAllFiles();
+	cin.get();
 
 }
 
-void Database::openNote(const string &fileName) {
-	cout << "----> " << fileName << endl;
-	readFrom(fileName);
-	writeInto(fileName);
+void Database::editNote(const string &fileName) {
+	try{
+		system("clear");
+		cout << "type \":q\" to finish writing.\n";
+		cout << "----> " << fileName << endl;
+		readFrom(fileName);
+		writeInto(fileName);
+	}
+	catch (exception &e)
+	{
+		//error
+	}
 }
