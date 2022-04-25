@@ -2,8 +2,9 @@
 #define FILEHANDLER_HPP
 
 #include "main.hpp"
+#include "IOhandler.hpp"
 
-class Filehandler {
+class Filehandler : public IOhandler {
 protected:
 	const char *_directory;
 	unsigned int count;
@@ -12,6 +13,8 @@ public:
 	void showAllFiles() const;
 	void setDirectory(char *dirName);
 	unsigned int countFiles();
+
+	// void output(const string message) const;
 };
 
 #endif

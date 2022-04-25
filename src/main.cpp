@@ -5,7 +5,7 @@
 
 
 int main() {
-	Database *currentDB = new Database("./db/");
+	Database *currentDB = new Database(".//db//");
 	Primary *mainMenu = new Primary();
 	Secondary *addMenu = new Secondary();
 

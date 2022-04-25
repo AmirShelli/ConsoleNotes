@@ -24,3 +24,7 @@ there are two level of menus.
 		you for input to write in it
 	- back: sends you back to the first menu
 ! to stop writing type ":q" in a separate line
+
+hello
+world
+

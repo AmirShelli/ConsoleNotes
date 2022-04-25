@@ -1,4 +1,5 @@
 #include "../inc/Filehandler.hpp"
+#include <iostream>
 
 bool Filehandler::isValid(const string &fileName) const {
 	DIR* dir_point = opendir(this->_directory);
@@ -19,7 +20,7 @@ void Filehandler::showAllFiles() const {
 
 	while ((entry = readdir(dir_point))){
 		if (entry->d_type == DT_REG)
-			cout << entry->d_name << endl;
+				Filehandler::output(entry->d_name);
 	}
 	closedir(dir_point);
 }
@@ -42,3 +43,8 @@ void Filehandler::setDirectory(char *dirName)
 {
 	_directory = dirName;
 }
+
+
+// void Filehandler::output(const string message) const {
+
+// }

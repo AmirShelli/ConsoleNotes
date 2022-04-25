@@ -1,5 +1,7 @@
 #include "../inc/Database.hpp"
 #include <cstdlib>
+#include <cstdio>
+#include <exception>
 
 
 Database::Database(const string &directory)
@@ -39,7 +41,7 @@ void Database::writeInto(const string &fileName) {
 	if (file.is_open())
 	{
 		while(getline(cin, line) && line.compare(":q"))
-			file << line << endl;
+			file << line << "\n";
 		file.close();
 	}
 	else 
@@ -49,18 +51,17 @@ void Database::writeInto(const string &fileName) {
 void Database::addNote() {
 	ofstream file;
 	string fileName;
-	bool alreadyExists;
 
 	do {
-		cout << "name of the note: ";
-		cin >> fileName;
+		output("name of the note: ");
+		fileName = input();
 	} while(isValid(fileName));
 
 	file.open(this->getDirectory() + fileName);
 	if (file.is_open()){
-		cout << "your note was successfully created.\n";
+		output("your note was successfully created.");
 		file.close();
-		cin.get();
+		waitCommand();
 	}	
 	else
 		throw exception();
@@ -69,25 +70,27 @@ void Database::addNote() {
 
 void Database::deleteNote(const string &fileName)
 {
-	cout << "not yet implemented";
-	cin.get();
+	const int result = remove(fileName.c_str());
+	if(result == 0)
+		output("successfully delete.");
+	else
+		throw exception();
+	waitCommand();
 }
 
 void Database::allNotes() {
 	system("clear");
 	if(!this->countFiles())
-		cout << "you have no files in your database.";
+		output("you have no files in your database.");
 	else 
 		this->showAllFiles();
-	cin.get();
-
 }
 
 void Database::editNote(const string &fileName) {
 	try{
 		system("clear");
-		cout << "type \":q\" to finish writing.\n";
-		cout << "----> " << fileName << endl;
+		output("type \":q\" to finish writing.");
+		output("----> " + fileName);
 		readFrom(fileName);
 		writeInto(fileName);
 	}

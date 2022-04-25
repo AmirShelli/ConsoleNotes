@@ -13,11 +13,12 @@ bool Primary::choseOption(const string& option, Database *db) {
 	if(commandMap.count(option)) {
 		try {
 			(db->*commandMap.find(option)->second)();
-			cin.get();
 			return true;
 		}
 		catch (exception &e){
+			system("clear");
 			output(e.what());
+			waitCommand();
 		}
 	}
 	output("please choose one of the options written above!");
@@ -27,7 +28,6 @@ bool Primary::choseOption(const string& option, Database *db) {
 
 
 void Primary::displayMenu(){
-	string option;
 	system("clear");
 	output("type one option.");
 	output("\tall\tadd\texit");

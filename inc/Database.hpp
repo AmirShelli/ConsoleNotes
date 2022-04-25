@@ -3,6 +3,7 @@
 
 #include "main.hpp"
 #include "Filehandler.hpp"
+#include "IOhandler.hpp"
 #include <unistd.h>
 
 class Database : public Filehandler {

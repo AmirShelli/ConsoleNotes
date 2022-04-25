@@ -6,7 +6,8 @@
 class IOhandler {
 public:
 	virtual const string input() const;
-	virtual void output(const string message);
+	virtual void output(const string message) const;
+	void waitCommand() const;
 };
 
 #endif

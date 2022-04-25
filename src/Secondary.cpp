@@ -7,27 +7,25 @@ Secondary::Secondary() {
 	commandMap["delete"] = &Secondary::deleteNote;
 }
 
-void editNote()
-{
-
-}
-
 bool Secondary::choseOption(const string& option, Database *db) {
 	string fileName;
 
 	if(commandMap.count(option)) {
 		try {
-			do {//put in an pure method in IOhandler
+			do {
 				system("clear");
 				db->allNotes();
 				output("type the name of the file you need.");
 				fileName = input();
 			}while (!db->isValid(fileName));
+			// system("clear");
 			(db->*commandMap.find(option)->second)(db->getDirectory() + fileName);
 			return true;
 		}
 		catch (exception &e){
+			system("clear");
 			output(e.what());
+			waitCommand();
 		}
 	}
 	if (!option.compare("back") || !option.compare("exit") )
@@ -38,8 +36,6 @@ bool Secondary::choseOption(const string& option, Database *db) {
 }
 
 void Secondary::displayMenu() {
-	string option;
-
 	system("clear");
 	output("type one option.");
 	output("\tedit\tdelete\tback");
