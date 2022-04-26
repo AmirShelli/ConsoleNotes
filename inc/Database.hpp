@@ -8,7 +8,7 @@
 
 class Database : public Filehandler {
 private:
-	const char *_homeDirectory = get_current_dir_name();
+	// const char *_homeDirectory = get_current_dir_name();
 	void readFrom(const string &fileName);
 	void writeInto(const string &fileName);
 public:
@@ -19,7 +19,7 @@ public:
 	void editNote(const string &fileName);
 	void deleteNote(const string &fileName);
 
-	const char *getHome() const;
+	// const char *getHome() const;
 	const char *getDirectory() const;
 };
 

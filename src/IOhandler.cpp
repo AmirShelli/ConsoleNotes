@@ -17,7 +17,7 @@ void IOhandler::output(const string message) const {
 
 void IOhandler::waitCommand() const {
 	output("enter any character to continue...");
-	cin.get();
 	cin.ignore(numeric_limits<streamsize>::max(), '\n');
+	cin.get();
 	system("clear");
 }

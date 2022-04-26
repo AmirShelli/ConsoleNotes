@@ -25,9 +25,9 @@ void Database::readFrom(const string &fileName) {
 	
 }
 
-const char *Database::getHome() const {
-	return this->_homeDirectory;
-}
+// const char *Database::getHome() const {
+// 	return this->_homeDirectory;
+// }
 
 const char *Database::getDirectory() const {
 	return this->_directory;
@@ -61,7 +61,6 @@ void Database::addNote() {
 	if (file.is_open()){
 		output("your note was successfully created.");
 		file.close();
-		waitCommand();
 	}	
 	else
 		throw exception();
@@ -79,7 +78,6 @@ void Database::deleteNote(const string &fileName)
 }
 
 void Database::allNotes() {
-	system("clear");
 	if(!this->countFiles())
 		output("you have no files in your database.");
 	else 

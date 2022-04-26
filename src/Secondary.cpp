@@ -18,7 +18,7 @@ bool Secondary::choseOption(const string& option, Database *db) {
 				output("type the name of the file you need.");
 				fileName = input();
 			}while (!db->isValid(fileName));
-			// system("clear");
+			system("clear");
 			(db->*commandMap.find(option)->second)(db->getDirectory() + fileName);
 			return true;
 		}

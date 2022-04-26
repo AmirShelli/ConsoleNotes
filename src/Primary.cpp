@@ -12,7 +12,9 @@ bool Primary::choseOption(const string& option, Database *db) {
 		return true;
 	if(commandMap.count(option)) {
 		try {
+			system("clear");
 			(db->*commandMap.find(option)->second)();
+			waitCommand();
 			return true;
 		}
 		catch (exception &e){

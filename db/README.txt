@@ -25,6 +25,4 @@ there are two level of menus.
 	- back: sends you back to the first menu
 ! to stop writing type ":q" in a separate line
 
-hello
-world
 
