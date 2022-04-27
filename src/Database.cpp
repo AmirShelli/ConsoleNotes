@@ -97,3 +97,5 @@ void Database::editNote(const string &fileName) {
 		//error
 	}
 }
+
+Database::~Database() {}

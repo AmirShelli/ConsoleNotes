@@ -9,6 +9,7 @@ class Imenu : public Database {
 public:
 	virtual void displayMenu() = 0;
 	virtual bool choseOption(const string& option, Database *db) = 0;
+	virtual ~Imenu() = 0;
 };
 
 #endif

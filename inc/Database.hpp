@@ -14,11 +14,12 @@ private:
 public:
 	Database() = default;
 	Database(const string &dirName);
+	virtual ~Database();
 	void addNote();
 	void allNotes();
 	void editNote(const string &fileName);
 	void deleteNote(const string &fileName);
-
+	
 	// const char *getHome() const;
 	const char *getDirectory() const;
 };

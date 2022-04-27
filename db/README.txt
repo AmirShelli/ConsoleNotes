@@ -26,3 +26,12 @@ there are two level of menus.
 ! to stop writing type ":q" in a separate line
 
 
+
+hello world
+
+
+testing
+
+test
+
+test

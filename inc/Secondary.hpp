@@ -11,6 +11,7 @@ public:
 	Secondary();
 	void displayMenu();
 	bool choseOption(const string& option, Database *db);
+	~Secondary() {};
 };
 
 #endif

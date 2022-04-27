@@ -12,6 +12,7 @@ public:
 	Primary();
 	void displayMenu();
 	bool choseOption(const string& option, Database *db);
+	~Primary() {};
 };
 
 #endif

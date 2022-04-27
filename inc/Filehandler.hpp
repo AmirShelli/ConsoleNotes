@@ -13,7 +13,6 @@ public:
 	void showAllFiles() const;
 	void setDirectory(char *dirName);
 	unsigned int countFiles();
-
 	// void output(const string message) const;
 };
 

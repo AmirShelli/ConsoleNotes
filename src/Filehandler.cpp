@@ -11,6 +11,7 @@ bool Filehandler::isValid(const string &fileName) const {
 		}
 	}
 	closedir(dir_point);
+	delete entry;
 	return false;
 }
 
@@ -22,6 +23,7 @@ void Filehandler::showAllFiles() const {
 		if (entry->d_type == DT_REG)
 				Filehandler::output(entry->d_name);
 	}
+	delete entry;
 	closedir(dir_point);
 }
 
@@ -35,6 +37,7 @@ unsigned int Filehandler::countFiles()
 		if (entry->d_type == DT_REG)
 			count++;
 	}
+	delete entry;
 	closedir(dir_point);
 	return count;
 }
@@ -44,7 +47,3 @@ void Filehandler::setDirectory(char *dirName)
 	_directory = dirName;
 }
 
-
-// void Filehandler::output(const string message) const {
-
-// }

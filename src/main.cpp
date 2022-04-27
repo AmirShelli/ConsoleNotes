@@ -3,6 +3,13 @@
 #include "../inc/Secondary.hpp"
 #include <unistd.h>
 
+void freeAll() {}
+
+template<typename T, typename... Types>
+void freeAll(T obj1, Types... obj2){
+	delete obj1;
+	freeAll(obj2...);
+}
 
 int main() {
 	Database *currentDB = new Database(".//db//");
@@ -16,10 +23,13 @@ int main() {
 		do {
 			option = currentMenu->input();
 		} while (!currentMenu->choseOption(option, currentDB));
-		if(!option.compare("all")) // needs to be enhanced
+		if(!option.compare("all"))
 			currentMenu = addMenu;
 		else
 			currentMenu = mainMenu;
 	}while (option.compare("exit"));
+
+	
+	freeAll(mainMenu, addMenu, currentDB); 
 	return 0;
 }

@@ -1,6 +1,7 @@
 #include "../inc/Primary.hpp"
 #include <cstdlib>
 #include <iostream>
+#include <string>
 
 Primary::Primary() {
 	commandMap["add"] = &Primary::addNote;
@@ -27,11 +28,11 @@ bool Primary::choseOption(const string& option, Database *db) {
 	return false;
 }
 
-
-
 void Primary::displayMenu(){
 	system("clear");
 	output("type one option.");
 	output("\tall\tadd\texit");
 }
 
+
+Imenu::~Imenu() {};
