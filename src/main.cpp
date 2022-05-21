@@ -23,7 +23,7 @@ int main() {
 		do {
 			option = currentMenu->input();
 		} while (!currentMenu->choseOption(option, currentDB));
-		if(!option.compare("all"))
+		if(!option.compare("all")) 
 			currentMenu = addMenu;
 		else
 			currentMenu = mainMenu;
